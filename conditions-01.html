@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script>
+		const a = prompt('Write a number')
+		const b = prompt('Write an other number')
+		const result = a * b
+		let what = ""
+		if (!isNaN(result))
+		{
+			if (result >= 0)
+				what = " is positive"
+			else
+				what = " is negative"
+		}
+		console.log(`${a} * ${b} = ${result}${what}`)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

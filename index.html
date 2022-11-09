@@ -7,28 +7,28 @@
 	<title>Document</title>
 	<script>
 
-// 		const backtick = `Hello's
-// World`
-// 		const without_backtick = 'Hello\'s\nWorld'
-// 		console.log(backtick)
-// 		console.log(without_backtick)
-// 		const a = 'hello'
-// 		const b = 'world'
-// 		const c = a + ' ' + b
-// 		console.log(c)
+		const backtick = `Hello's
+World`
+		const without_backtick = 'Hello\'s\nWorld'
+		console.log(backtick)
+		console.log(without_backtick)
+		const a = 'hello'
+		const b = 'world'
+		const c = a + ' ' + b
+		console.log(c)
 	
-// 		const notes = [ 12, 15, 18, "hello", 'world', [1, 2, 3] ]
-// 		const reciepe = {
-// 			name: 'apple pie',
-// 			apple: 3,
-// 			mysc: {
-// 				name: undefined,
-// 				time: 30
-// 			},
-// 			'key': 23
-// 		}
-// 		console.log('key')
-// 		let note = notes
+		const notes = [ 12, 15, 18, "hello", 'world', [1, 2, 3] ]
+		const reciepe = {
+			name: 'apple pie',
+			apple: 3,
+			mysc: {
+				name: undefined,
+				time: 30
+			},
+			'key': 23
+		}
+		console.log('key')
+		let note = notes
 
 		const person1 = {
 			name: 'Joe',
@@ -42,18 +42,28 @@
 			minor: true,
 			country: "US"
 		}
-		const persons = [ person1, person2 ]
-		const canDriveInFrance = persons[0].country == 'FR' && persons[0].age >= 18
-		const canDriveInUS = persons[1].country == 'US' && persons[1].age >= 16
-		for (i = 0; i < 2; i++)
+		const person3 = {
+			name: 'Marco',
+			age: 65,
+			minor: false,
+			country: "FR"
+		}
+		const person4 = {
+			name: 'John',
+			age: 14,
+			minor: true,
+			country: "US"
+		}
+		const persons = [ person1, person2, person3, person4 ]
+		for (i = 0; i < persons.length; i++)
 		{
 			if (persons[i].age >= 18)
 				console.log(persons[i].name + ' is major')
 			else
 				console.log(persons[i].name + ' is minor')
-			if (canDriveInFrance)
+			if (persons[i].country == 'FR' && persons[i].age >= 18)
 				console.log(persons[i].name + ' can drive in France')
-			if (canDriveInUS)
+			if (persons[i].country == 'US' && persons[i].age >= 16)
 				console.log(persons[i].name + ' can drive in US')
 			
 		}
@@ -63,6 +73,20 @@
 		obj = 'bla'
 		console.log(obj)
 		console.log(str)
+
+		const age = 17
+		const country = 'FR'
+
+		switch (country) {
+			case 'FR':
+				console.log("I'm in France")
+				break
+			case 'US':
+				console.log("I'm in USA")
+				break
+			default:
+				console.log("Where am I ?")
+		}
 
 	</script>
 </head>
