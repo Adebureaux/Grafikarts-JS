@@ -19,11 +19,14 @@
 			Bonjour: false,
 			nice: false,
 			ici: true,
+			test: false,
 		}
 
 		for (let word in words) {
 			if (isPalindrome(word) !== words[word])
-				console.error(`isPalindrome(${word})`)
+				console.log(`${word} is not a palindrome`)
+			else
+				console.log(`${word} is a palindrome`)
 		}
 	</script>
 </head>
