@@ -1,78 +1,70 @@
-const list = document.querySelectorAll("ul li")
-const ul = document.querySelector("ul")
-let len = list.length
+let len = 0
+const hide = document.createElement('style');
+hide.innerHTML = '.hide { display: none; }';
+document.getElementsByTagName('head')[0].appendChild(hide);
 
-const trash = document.querySelectorAll(".btn-danger")
-for (let i = 0; i < trash.length; i++) {
-	trash[i].addEventListener("click", function(e) {
-		e.currentTarget.parentElement.remove()
-		len--
-	});
-}
-
-const checkbox = document.querySelectorAll(".form-check-input")
-for (let i = 0; i < checkbox.length; i++) {
-	checkbox[i].addEventListener("change", function(e) {
-		console.log(e.currentTarget)
-	});
-}
-
-document.querySelector("form").addEventListener("submit", function(e) {
+document.querySelector("form").addEventListener("submit", function (e) {
 	e.preventDefault()
 	const data = new FormData(e.currentTarget)
 	createNode(data.get("title"))
-	len++
-});
+})
+
+function toggleStatus (e) {
+	const status = document.querySelector(".active")
+	if (status !== e) {
+		const li = document.querySelectorAll("ul li")
+		status.setAttribute("class", "btn btn-outline-primary")
+		e.setAttribute("class", "btn btn-outline-primary active")
+		for (let i = 0; i < li.length; i++) {
+			li[i].setAttribute("class", "todo list-group-item d-flex align-items-center")
+			if (e.id === "todo" && li[i].id === "true")
+				li[i].setAttribute("class", "hide")
+			else if (e.id === "done" && li[i].id === "false")
+				li[i].setAttribute("class", "hide")
+		}
+	}
+}
 
 function createNode(title) {
+	const ul = document.querySelector("ul")
 	const li = document.createElement("li")
 	li.setAttribute("class", "todo list-group-item d-flex align-items-center")
-
+	li.setAttribute("id", "false")
+	
 	const input = document.createElement("input")
 	input.setAttribute("class", "form-check-input")
 	input.setAttribute("type", "checkbox")
 	input.setAttribute("id", `todo-${len + 1}`)
-	input.addEventListener("change", function(e) {
-		console.log(e.currentTarget)
-	});
+	input.addEventListener("change", function (e) {
+		const status = document.querySelector(".active").id
+		e.currentTarget.parentElement.setAttribute("id", e.target.checked)
+		if (status === "todo" && e.target.checked) 
+			e.currentTarget.parentElement.setAttribute("class", "hide")
+		else if (status === "done" && !e.target.checked)
+			e.currentTarget.parentElement.setAttribute("class", "hide")
+	})
 
 	const label = document.createElement("label")
 	label.textContent = title
 	label.setAttribute("class", "ms-2 form-check-label")
 	label.setAttribute("for", `todo-${len + 1}`)
 
-	const trash_label = document.createElement("label")
-	trash_label.setAttribute("class", "ms-auto btn btn-danger btn-sm")
-	trash_label.addEventListener("click", function(e) {
+	const trash = document.createElement("label")
+	trash.setAttribute("class", "ms-auto btn btn-danger btn-sm")
+	trash.addEventListener("click", function (e) {
 		e.currentTarget.parentElement.remove()
 		len--
-	});
+	})
 
 	const i = document.createElement("i")
 	i.setAttribute("class", "bi-trash")
 
 	li.appendChild(input)
 	li.appendChild(label)
-	li.appendChild(trash_label)
-	trash_label.appendChild(i)
+	li.appendChild(trash)
+	trash.appendChild(i)
+	if (document.querySelector(".active").id == "done")
+		li.setAttribute("class", "hide")
 	ul.appendChild(li)
+	len++
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// const myNodeList = document.querySelectorAll("ul li")
-
-
-// for (let i = 0; i < myNodeList.length; i++) {
-// 	let item = myNodeList[i];
-// 	console.log(item)
-// }
